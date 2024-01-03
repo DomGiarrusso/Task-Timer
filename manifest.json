@@ -1,10 +1,12 @@
 {
-  "manifest_version": 3,
-  "name": "Task:Timer",
-  "description": "A task timer that allows for easy task management inside of chrome.",
-  "version": "1.0.0",
-  "action": {
-    "default_popup": "index.html",
-    "default_icon": "Task_Timer_icon.png"
-  }
+    "manifest_version": 3,
+    "name": "Task:Timer",
+    "description": "A task timer that allows for easy task management inside of chrome.",
+    "version": "1.0.0",
+    "icons": {
+        "16": "icon32.png"
+    },
+    "action": {
+        "default_popup": "index.html"
+    }
 }
