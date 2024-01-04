@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Task Timer</title>
+        <script src="popup.js"></script>
+    </head>
+    <body>
+        <h1>Task Timer</h1>
+        <form id="timerForm">
+            <label>Work Hours:Minutes</label>
+            <input type="number" id="wHours" min="0" max="23" />
+            <span>:</span>
+            <input type="number" id="wMinutes" value="30" min="0" max="59" />
+            <label>Break Hours:Minutes</label>
+            <input type="number" id="bHours" min="0" max="23" />
+            <span>:</span>
+            <input type="number" id="bMinutes" value="5" min="0" max="59" />
+            <label>Repeat</label>
+            <input type="number" id="repeat" min="0" />
+            <button id="startButton">Start</button>
+            <input type="reset" value="Reset" />
+        </form>
+        <div id="timerContainer" class="timerContainer">
+            <div>Work Timer</div>
+            <div>Break Timer</div>
+            <div id="timerDisplay">00:00:00</div>
+            <button id="pauseButton">Pause</button>
+            <button id="stopButton">Stop</button>
+        </div>
+    </body>
+</html>
