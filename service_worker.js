@@ -9,22 +9,41 @@ chrome.runtime.onMessage.addListener((request) => {
             clearInterval(timerIntervalId);
         }
         // Probably add the do while loop here and if after this
-        timerIntervalId = startTimer(totalWorkTime);
+        let repeatCount = 0;
+        do {
+            timerIntervalId = startTimer(totalWorkTime, totalBreakTime);
+            repeatCount++;
+            console.log(repeatCount);
+            console.log(repeat);
+        } while (repeatCount < repeat);
+        //timerIntervalId = startTimer(totalWorkTime, totalBreakTime);
     }
 });
 
-function startTimer(totalTime) {
-    let currentTime = totalTime;
+function startTimer(workTime, breakTime) {
+    var currentTime = workTime;
 
-    const intervalId = setInterval(() => {
+    var intervalId = setInterval(() => {
         currentTime--;
         if (currentTime <= 0) {
             clearInterval(intervalId);
+            currentTime = breakTime;
+            intervalId = setInterval(() => {
+                currentTime--;
+                if (currentTime <= 0) {
+                    clearInterval(intervalId);
+                }
+                chrome.runtime.sendMessage({
+                    action: "updateTimer",
+                    currentTime,
+                });
+            }, 1000);
         }
         chrome.runtime.sendMessage({
             action: "updateTimer",
             currentTime,
         });
     }, 1000);
+
     return intervalId;
 }

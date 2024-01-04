@@ -25,16 +25,10 @@ document.addEventListener("DOMContentLoaded", function () {
             totalBreakTime,
             repeat,
         });
-        //let i = 0;
-        //do {
-        //    timer(workHours, workMinutes, breakTime);
-        //timer(breakHours, breakMinutes, workTime);
-        //    i++;
-        //} while (i < repeat);
     });
 
     // Listen for messages from the background script
-    chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+    chrome.runtime.onMessage.addListener((request) => {
         if (request.action === "updateTimer") {
             const currentTime = request.currentTime;
             updateTimer(currentTime);
@@ -46,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const hours = Math.floor(currentTime / 3600);
         const minutes = Math.floor((currentTime % 3600) / 60);
         const seconds = currentTime % 60;
-        timerDisplay.textContent = `${hours}h ${minutes}m ${seconds}s`;
+        timerDisplay.textContent = `${hours}h:${minutes}m:${seconds}s`;
     }
 
     function timer(hours, minutes, timesUp) {
