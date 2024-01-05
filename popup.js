@@ -2,9 +2,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const startButton = document.getElementById("startButton");
     const pauseButton = document.getElementById("pauseButton");
     const stopButton = document.getElementById("stopButton");
+    const timerTitle = document.getElementById("timerTitle");
     const timerDisplay = document.getElementById("timerDisplay");
-    const breakTime = "It's time to take a break!";
-    const workTime = "It's time to get back to work!";
 
     startButton.addEventListener("click", function (e) {
         e.preventDefault();
@@ -25,6 +24,10 @@ document.addEventListener("DOMContentLoaded", function () {
             action: "startTimer",
             totalWorkTime,
             totalBreakTime,
+            workHours,
+            workMinutes,
+            breakHours,
+            breakMinutes,
             repeat,
         });
     });
@@ -36,6 +39,12 @@ document.addEventListener("DOMContentLoaded", function () {
         chrome.runtime.sendMessage({
             action: "pauseTimer",
         });
+        // Change the button text
+        if (pauseButton.textContent === "Pause") {
+            pauseButton.textContent = "Play";
+        } else {
+            pauseButton.textContent = "Pause";
+        }
     });
 
     stopButton.addEventListener("click", function (e) {
@@ -57,12 +66,28 @@ document.addEventListener("DOMContentLoaded", function () {
             updateTimer(currentTime);
         }
     });
+    // Update timer title
+    chrome.runtime.onMessage.addListener((request) => {
+        if (request.action === "timerTitle") {
+            const currentTimer = request.timerTitle;
+            timerTitle.textContent = currentTimer;
+        }
+    });
 
     // Update time display on popup
     function updateTimer(currentTime) {
-        const hours = Math.floor(currentTime / 3600);
-        const minutes = Math.floor((currentTime % 3600) / 60);
-        const seconds = currentTime % 60;
+        let hours = Math.floor(currentTime / 3600);
+        let minutes = Math.floor((currentTime % 3600) / 60);
+        let seconds = currentTime % 60;
+        if (hours < 10) {
+            hours = "0" + hours;
+        }
+        if (minutes < 10) {
+            minutes = "0" + minutes;
+        }
+        if (seconds < 10) {
+            seconds = "0" + seconds;
+        }
         timerDisplay.textContent = `${hours}h:${minutes}m:${seconds}s`;
     }
 });
