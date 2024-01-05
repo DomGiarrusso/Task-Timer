@@ -1,31 +1,74 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" data-bs-theme="dark">
     <head>
         <meta charset="utf-8" />
         <title>Task Timer</title>
+        <link rel="stylesheet" href="popup.css" />
         <script src="popup.js"></script>
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+            crossorigin="anonymous"
+        />
     </head>
-    <body>
-        <h1>Task Timer</h1>
-        <form id="timerForm">
-            <label>Work Hours:Minutes</label>
-            <input type="number" id="wHours" min="0" max="23" />
-            <span>:</span>
-            <input type="number" id="wMinutes" value="30" min="0" max="59" />
-            <label>Break Hours:Minutes</label>
-            <input type="number" id="bHours" min="0" max="23" />
-            <span>:</span>
-            <input type="number" id="bMinutes" value="5" min="0" max="59" />
-            <label>Repeat</label>
-            <input type="number" id="repeat" value="0" min="0" />
+    <body class="darkbg">
+        <h1 class="title">Task:Timer</h1>
+        <div id="timerContainer" class="timerContainer">
+            <div id="timerTitle" class="timerTitle">Work Timer</div>
+            <div id="timerDisplay" class="timerDisplay">00h:00m:00s</div>
+            <div class="d-inline">
+                <button
+                    id="pauseButton"
+                    class="btn btn-primary"
+                    style="
+                        --bs-btn-bg: #5b8dff;
+                        --bs-btn-font-weight: bold;
+                        --bs-btn-padding-x: 20px;
+                    "
+                >
+                    Pause
+                </button>
+                <button
+                    id="stopButton"
+                    class="btn btn-primary"
+                    style="
+                        --bs-btn-bg: #5b8dff;
+                        --bs-btn-font-weight: bold;
+                        --bs-btn-padding-x: 20px;
+                    "
+                >
+                    Stop
+                </button>
+            </div>
+        </div>
+        <form id="timerForm" class="timerForm">
+            <div>
+                <label>Work</label>
+                <label>Hours:Minutes</label>
+                <input type="number" id="wHours" min="0" max="23" />
+                <span>:</span>
+                <input
+                    type="number"
+                    id="wMinutes"
+                    value="30"
+                    min="0"
+                    max="59"
+                />
+            </div>
+            <div>
+                <label>Break</label>
+                <label>Hours:Minutes</label>
+                <input type="number" id="bHours" min="0" max="23" />
+                <span>:</span>
+                <input type="number" id="bMinutes" value="5" min="0" max="59" />
+            </div>
+            <div>
+                <label>Repeat</label>
+                <input type="number" id="repeat" value="0" min="0" />
+            </div>
             <button id="startButton">Start</button>
             <input type="reset" value="Reset" />
         </form>
-        <div id="timerContainer" class="timerContainer">
-            <div id="timerTitle">Work Timer</div>
-            <div id="timerDisplay">00h:00m:00s</div>
-            <button id="pauseButton">Pause</button>
-            <button id="stopButton">Stop</button>
-        </div>
     </body>
 </html>
