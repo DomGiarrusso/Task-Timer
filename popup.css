@@ -46,7 +46,12 @@
 .hiddenText {
     display: none;
     text-align: center;
-    color: red;
     font-size: 12px;
     padding-bottom: 5px;
+}
+
+.by {
+    text-align: center;
+    font-size: 12px;
+    padding: 0.1rem;
 }

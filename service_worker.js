@@ -1,8 +1,10 @@
+// Setting default variables
 let timerIntervalId;
 let isPaused = false;
 let isStopped = false;
 let timerTitle = `Work Timer`;
 
+// Listen for messages from the popup
 chrome.runtime.onMessage.addListener((request) => {
     if (request.action === "startTimer") {
         // Get timer variables from popup.js
@@ -39,10 +41,12 @@ chrome.runtime.onMessage.addListener((request) => {
     }
 });
 
+// Start Timer Function
 function startTimer(workTime, breakTime) {
     var currentTime = workTime;
     timerTitle = `Work Timer`;
 
+    // Work Timer
     var intervalId = setInterval(() => {
         if (isPaused) {
             return;
@@ -52,6 +56,7 @@ function startTimer(workTime, breakTime) {
             return;
         }
         currentTime--;
+        // Break timer
         if (currentTime <= 0) {
             clearInterval(intervalId);
             showNotification(`Time to take a break!`);
@@ -70,20 +75,24 @@ function startTimer(workTime, breakTime) {
                     clearInterval(intervalId);
                     showNotification(`Time to get back to work!`);
                 }
+                // Sends message back to update timer
                 chrome.runtime.sendMessage({
                     action: "updateTimer",
                     currentTime,
                 });
+                // Sends message back to update timer title
                 chrome.runtime.sendMessage({
                     action: "timerTitle",
                     timerTitle,
                 });
-            }, 1000);
+            }, 1000); // End of Break Timer
         }
+        // Sends message back to update timer
         chrome.runtime.sendMessage({
             action: "updateTimer",
             currentTime,
         });
+        // Sends message back to update timer title
         chrome.runtime.sendMessage({
             action: "timerTitle",
             timerTitle,
@@ -93,7 +102,7 @@ function startTimer(workTime, breakTime) {
     return intervalId;
 }
 
-// Show notification
+// Show notification function
 
 function showNotification(message) {
     chrome.notifications.create("", {
