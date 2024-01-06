@@ -17,58 +17,101 @@
         <div id="timerContainer" class="timerContainer">
             <div id="timerTitle" class="timerTitle">Work Timer</div>
             <div id="timerDisplay" class="timerDisplay">00h:00m:00s</div>
-            <div class="d-inline">
+            <div class="d-flex justify-content-center gap-3">
                 <button
                     id="pauseButton"
                     class="btn btn-primary"
-                    style="
-                        --bs-btn-bg: #5b8dff;
-                        --bs-btn-font-weight: bold;
-                        --bs-btn-padding-x: 20px;
-                    "
+                    style="--bs-btn-bg: #5b8dff; --bs-btn-font-weight: bold"
                 >
                     Pause
                 </button>
                 <button
                     id="stopButton"
                     class="btn btn-primary"
-                    style="
-                        --bs-btn-bg: #5b8dff;
-                        --bs-btn-font-weight: bold;
-                        --bs-btn-padding-x: 20px;
-                    "
+                    style="--bs-btn-bg: #5b8dff; --bs-btn-font-weight: bold"
                 >
                     Stop
                 </button>
             </div>
         </div>
         <form id="timerForm" class="timerForm">
+            <div class="d-grid">
+                <label class="form-label">Work Timer Controls</label>
+                <div id="errorWorkText" class="hiddenText">
+                    Please fill in at least one field for <br />Work Timer
+                    Control
+                </div>
+                <div class="d-inline-flex gap-2">
+                    <input
+                        type="number"
+                        id="wHours"
+                        class="form-control"
+                        placeholder="Hours"
+                        min="0"
+                        max="23"
+                    />
+                    <span class="align-self-center">:</span>
+                    <input
+                        type="number"
+                        id="wMinutes"
+                        class="form-control"
+                        placeholder="Minutes"
+                        min="0"
+                        max="59"
+                    />
+                </div>
+            </div>
+            <div class="d-grid gap-2 mt-2">
+                <label class="form-label">Break Timer Controls</label>
+                <div id="errorBreakText" class="hiddenText">
+                    Please fill in at least one field for <br />Break Timer
+                    Control
+                </div>
+                <div class="d-inline-flex gap-2">
+                    <input
+                        type="number"
+                        id="bHours"
+                        class="form-control"
+                        placeholder="Hours"
+                        min="0"
+                        max="23"
+                    />
+                    <span class="align-self-center">:</span>
+                    <input
+                        type="number"
+                        id="bMinutes"
+                        class="form-control"
+                        placeholder="Minutes"
+                        min="0"
+                        max="59"
+                    />
+                </div>
+            </div>
             <div>
-                <label>Work</label>
-                <label>Hours:Minutes</label>
-                <input type="number" id="wHours" min="0" max="23" />
-                <span>:</span>
+                <label class="form-label mt-2">Repeat Count</label>
                 <input
                     type="number"
-                    id="wMinutes"
-                    value="30"
+                    id="repeat"
+                    class="form-control align-self-center"
+                    placeholder="Times to Repeat"
                     min="0"
-                    max="59"
                 />
             </div>
-            <div>
-                <label>Break</label>
-                <label>Hours:Minutes</label>
-                <input type="number" id="bHours" min="0" max="23" />
-                <span>:</span>
-                <input type="number" id="bMinutes" value="5" min="0" max="59" />
+            <div class="d-flex justify-content-center gap-3 mt-3">
+                <button
+                    id="startButton"
+                    class="btn btn-primary"
+                    style="--bs-btn-bg: #5b8dff; --bs-btn-font-weight: bold"
+                >
+                    Start
+                </button>
+                <input
+                    type="reset"
+                    value="Reset"
+                    class="btn btn-primary"
+                    style="--bs-btn-bg: #5b8dff; --bs-btn-font-weight: bold"
+                />
             </div>
-            <div>
-                <label>Repeat</label>
-                <input type="number" id="repeat" value="0" min="0" />
-            </div>
-            <button id="startButton">Start</button>
-            <input type="reset" value="Reset" />
         </form>
     </body>
 </html>

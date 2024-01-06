@@ -7,16 +7,56 @@ document.addEventListener("DOMContentLoaded", function () {
 
     startButton.addEventListener("click", function (e) {
         e.preventDefault();
-        const workHours =
-            parseInt(document.getElementById("wHours").value) || 0;
-        const workMinutes =
-            parseInt(document.getElementById("wMinutes").value) || 0;
-        const breakHours =
-            parseInt(document.getElementById("bHours").value) || 0;
-        const breakMinutes =
-            parseInt(document.getElementById("bMinutes").value) || 0;
+
+        const workHoursInput = document.getElementById("wHours").value;
+        const workMinutesInput = document.getElementById("wMinutes").value;
+        const breakHoursInput = document.getElementById("bHours").value;
+        const breakMinutesInput = document.getElementById("bMinutes").value;
+
+        const workHours = parseInt(workHoursInput) || 0;
+        const workMinutes = parseInt(workMinutesInput) || 0;
+        const breakHours = parseInt(breakHoursInput) || 0;
+        const breakMinutes = parseInt(breakMinutesInput) || 0;
         const repeat = parseInt(document.getElementById("repeat").value) || 0;
 
+        if (workHoursInput === "") {
+            if (workMinutesInput === "") {
+                console.log(
+                    "Please fill in at least one field for Work Timer Control"
+                );
+
+                let errorWorkText = document.getElementById("errorWorkText");
+
+                // Set the text element to visible
+                errorWorkText.style.display = "block";
+
+                // Set a timer for a certain amount of seconds (e.g., 5 seconds)
+                setTimeout(function () {
+                    // Set text back to hidden
+                    errorWorkText.style.display = "none";
+                }, 5000); // 5000 ms = 5 seconds
+                return;
+            }
+        }
+        if (breakHoursInput === "") {
+            if (breakMinutesInput === "") {
+                console.log(
+                    "Please fill in at least one field for Break Timer Control"
+                );
+
+                let errorBreakText = document.getElementById("errorBreakText");
+
+                // Set the text element to visible
+                errorBreakText.style.display = "block";
+
+                // Set a timer for a certain amount of seconds (e.g., 5 seconds)
+                setTimeout(function () {
+                    // Set text back to hidden
+                    errorBreakText.style.display = "none";
+                }, 5000); // 5000 ms = 5 seconds
+                return;
+            }
+        }
         totalWorkTime = workHours * 3600 + workMinutes * 60;
         totalBreakTime = breakHours * 3600 + breakMinutes * 60;
 

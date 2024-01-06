@@ -1,5 +1,6 @@
 .darkbg {
     background-color: #1a1d20;
+    width: 15rem;
 }
 .title {
     text-align: center;
@@ -28,13 +29,24 @@
     padding-bottom: 1rem;
 }
 
-.btn-primary {
-    font-weight: bold;
-    background-color: #5b8dff;
-}
-
 .timerForm {
     display: block;
     text-align: center;
     padding: 0.5rem;
+}
+.form-label {
+    font-weight: bold;
+}
+
+.form-control {
+    text-align: center;
+    width: 10px;
+}
+
+.hiddenText {
+    display: none;
+    text-align: center;
+    color: red;
+    font-size: 12px;
+    padding-bottom: 5px;
 }
