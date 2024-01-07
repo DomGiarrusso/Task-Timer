@@ -26,7 +26,7 @@ What is Task:Timer? You maybe asking. Task:Timer is a chrome extenstion allowing
 > This isn't the best long term method of running the extension since it requires a lot of work and isn't easy to update.
 
 > [!IMPORTANT]
-> More ways coming soon to add Task:Timer
+> Currently this method is the only way to add the extension. Working on adding it to Chrome Web store
 
 ### How to use:
 
