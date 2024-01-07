@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const breakMinutes = parseInt(breakMinutesInput) || 0;
         const repeat = parseInt(document.getElementById("repeat").value) || 0;
 
-        //Error Handling Input Fields
+        // Error Handling Input Fields
         if (workHoursInput === "") {
             if (workMinutesInput === "") {
                 console.log(
@@ -108,6 +108,7 @@ document.addEventListener("DOMContentLoaded", function () {
         timerDisplay.textContent = "00h:00m:00s";
     });
 
+    // Update timer display
     // Listen for messages from the background script
     chrome.runtime.onMessage.addListener((request) => {
         if (request.action === "updateTimer") {
@@ -123,6 +124,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    // Update timer function
     // Update time display on popup
     function updateTimer(currentTime) {
         let hours = Math.floor(currentTime / 3600);

@@ -85,8 +85,8 @@ function startTimer(workTime, breakTime) {
                     action: "timerTitle",
                     timerTitle,
                 });
-            }, 1000); // End of Break Timer
-        }
+            }, 1000);
+        } // End of Break Timer
         // Sends message back to update timer
         chrome.runtime.sendMessage({
             action: "updateTimer",
