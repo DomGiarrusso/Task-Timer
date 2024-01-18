@@ -4,7 +4,7 @@
 
 ## Overview:
 
-What is Task:Timer? You maybe asking. Task:Timer is a chrome extenstion allowing you to set two timers at once. Why two timers? you may now be asking. Well the idea follows the time management method called _The Pomodoro Technique_. This technique follows the concept that you work more effiently by working for a set number of time and then taking a break usually for a shorter amount of time. An example of this would me working for 30 minutes and then taking a break for 5 minutes. Task:Timer is to help time manange better.
+What is Task:Timer? You maybe asking. Task:Timer is a Chrome extension that allows you to set two timers at once. Why two-timers? you may now be asking. Well, the idea follows the time management method called _The Pomodoro Technique_. This technique follows the concept that you work more efficiently by working for a set number of time and then taking a break usually for a shorter amount of time. An example of this would be working for 30 minutes and then taking a break for 5 minutes. Task:Timer is to help time manage better.
 
 ### How to install:
 
